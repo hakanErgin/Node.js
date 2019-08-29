@@ -15,60 +15,38 @@ function createServer(port) {
     if (url === "/state") {
       response.writeHead(
         200,
-        {
-          'Content-Type': 'application/json'
-        }
+        { 'Content-Type': 'application/json' }
       );
-      const stateResponse = {
-        state
-      }
-      response.write(JSON.stringify(stateResponse));
+      response.write(JSON.stringify({ state }));
     }
     else if (url === "/add") {
       response.writeHead(
         200,
-        {
-          'Content-Type': 'application/json'
-        }
+        { 'Content-Type': 'application/json' }
       );
       state++;
-      const stateResponse = {
-        "state": state
-      }
-      response.write(JSON.stringify(stateResponse));
+      response.write(JSON.stringify({ state }));
     }
     else if (url === "/subtract") {
       response.writeHead(
         200,
-        {
-          'Content-Type': 'application/json'
-        }
+        { 'Content-Type': 'application/json' }
       );
       state--;
-      const stateResponse = {
-        "state": state
-      }
-      response.write(JSON.stringify(stateResponse));
+      response.write(JSON.stringify({ state }));
     }
     else if (url === "/reset") {
       response.writeHead(
         200,
-        {
-          'Content-Type': 'application/json'
-        }
+        { 'Content-Type': 'application/json' }
       );
       state = 10;
-      const stateResponse = {
-        state
-      }
-      response.write(JSON.stringify(stateResponse));
+      response.write(JSON.stringify({ state }));
     }
     else {
       response.writeHead(
         404,
-        {
-          'Content-Type': 'application/json'
-        }
+        { 'Content-Type': 'application/json' }
       );
       const stateResponse = {
         "error": "Not found"
