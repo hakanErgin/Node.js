@@ -23,7 +23,6 @@ function createServer(port) {
         state
       }
       response.write(JSON.stringify(stateResponse));
-      response.end()
     }
     else if (url === "/add") {
       response.writeHead(
@@ -37,7 +36,6 @@ function createServer(port) {
         "state": state
       }
       response.write(JSON.stringify(stateResponse));
-      response.end()
     }
     else if (url === "/subtract") {
       response.writeHead(
@@ -51,7 +49,6 @@ function createServer(port) {
         "state": state
       }
       response.write(JSON.stringify(stateResponse));
-      response.end()
     }
     else if (url === "/reset") {
       response.writeHead(
@@ -65,7 +62,6 @@ function createServer(port) {
         state
       }
       response.write(JSON.stringify(stateResponse));
-      response.end()
     }
     else {
       response.writeHead(
@@ -78,8 +74,8 @@ function createServer(port) {
         "error": "Not found"
       }
       response.write(JSON.stringify(stateResponse));
-      response.end()
     }
+    response.end()
   });
   return server;
 }
