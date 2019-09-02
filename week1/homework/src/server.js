@@ -9,7 +9,6 @@ function createServer(port) {
   let state = 10;
   const server = http.createServer((request, response) => {
     // TODO: Write your homework code here
-    console.log(request.method, request.url);
     response.writeHead(200, { 'Content-Type': 'application/json' });
     switch (request.url) {
       case '/state':
