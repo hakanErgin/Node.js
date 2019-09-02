@@ -73,14 +73,13 @@ Removes all to-do items from the list:
 node index.js reset
 ```
 
-## Things to consider
+## Things to consider  
 
-- What representation you use in your file (CSV, TSV, JSON, etc).
 - Handle edge cases, i.e. control what happens if user enters unexpected input,
   e.g. `remove -100`.
 - Write [dry, modular code that is easy to read](../../wiki/Writing-readable,-DRY-&-modular-code): choose good variable and function names, keeps code involving a single task bundled together in a function or module, refactor repeated code into a function.
 
-## Bonus
+## Bonus  
 - Use [commander](https://www.npmjs.com/package/commander) library to implement
   command line interface
 
