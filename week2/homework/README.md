@@ -16,6 +16,8 @@ The second assignment is to create a command line application like we did in cla
 - The user must be able to `add`, `remove`, `update` and `list` to-dos.
 - The user must be able to remove all to-dos at once.
 
+You can draw some inspiration from the [examples given in class](../lecture). Keep in mind that these examples have not been refactored to dry, modular code yet!
+
 The following commands must be present:
 
 ### No command or `help`
