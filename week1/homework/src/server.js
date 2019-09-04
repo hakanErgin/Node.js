@@ -1,40 +1,43 @@
-'use strict';
-
 const http = require('http');
+const state = require('./state');
 
-/* `createServer` MUST return an instance of `http.Server` otherwise the tests
- * will fail.
- */
 function createServer(port) {
-  let state = 10;
+
   const server = http.createServer((request, response) => {
-    // TODO: Write your homework code here
-    response.writeHead(200, { 'Content-Type': 'application/json' });
-    switch (request.url) {
+    const url = request.url;
+
+    switch (url) {
       case '/state':
-        response.write(JSON.stringify({ state }));
+        respondJSON(response, 200, state.get());
         break;
       case '/add':
-        state++;
-        response.write(JSON.stringify({ state }));
-        break;
-      case '/reset':
-        state = 10;
-        response.write(JSON.stringify({ state }));
+        respondJSON(response, 200, state.add());
         break;
       case '/subtract':
-        state--;
-        response.write(JSON.stringify({ state }));
+        respondJSON(response, 200, state.subtract());
+        break;
+      case '/reset':
+        respondJSON(response, 200, state.reset());
         break;
       default:
-        response.writeHead(404, { 'Content-Type': 'application/json' });
-        response.write(JSON.stringify({ error: 'Not found' }));
+        respondJSON(response, 404, {
+          error: 'Not found'
+        });
         break;
     }
-    response.end();
   });
+
   return server;
 }
+
+function respondJSON(resp, statusCode, messageObj) {
+  resp.writeHead(statusCode, {
+    'Content-Type': 'application/json'
+  });
+  resp.write(JSON.stringify(messageObj));
+  resp.end();
+}
+
 module.exports = {
   createServer
 };
