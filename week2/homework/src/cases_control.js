@@ -2,19 +2,18 @@
 
 const pathToList = "./todolist.json"
 const pathToCmds = "./cmdlist.json"
-const todoListFile = require("./fs_handler")
-const readFromFile = todoListFile.readFromFile
-const addToFile = todoListFile.addToFile
-const readIfNotEmpty = todoListFile.readIfNotEmpty
-const removeFromFile = todoListFile.removeFromFile
-const resetFile = todoListFile.resetFile
+const fsHandler = require("./fs_handler")
+const readFromFile = fsHandler.readFromFile
+const addToFile = fsHandler.addToFile
+const removeFromFile = fsHandler.removeFromFile
+const resetFile = fsHandler.resetFile
 
 function showHelp() {
     readFromFile(pathToCmds)
 }
 
 function showList() {
-    readIfNotEmpty(pathToList, readFromFile)
+    readFromFile(pathToList, readFromFile)
 }
 
 function add(param) {
