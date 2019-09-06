@@ -8,7 +8,18 @@ const readFromFile = function (path) {
   })
 }
 
-function writeToFile(path, firstParam) {
+const readMakeArrayRewrite = function (path, param) {
+  fs.readFile(path, 'utf8', (err, data) => {
+    if (err) throw err
+    const splitData = data.split('\n')
+    splitData.splice(0, param)
+
+
+
+  })
+}
+
+const appendToFile = function (path, firstParam) {
   fs.appendFile(path, firstParam, (err) => {
     if (err) throw err
   })
@@ -18,7 +29,15 @@ const readIfNotEmpty = function (path, func) {
   fs.readFile(path, 'utf8', (err, data) => {
     if (err) throw err
     else if (data.split('').length < 1) console.log("nothing to show")
-    else (readFromFile(path))
+    else (func(path))
+  })
+}
+
+const writeNewLineIfNotEmpty = function (path, param, func) {
+  fs.readFile(path, 'utf8', (err, data) => {
+    if (err) throw err
+    else if (data.split('').length < 1) (func(path, param))
+    else (func(path, "\n" + param))
   })
 }
 
@@ -27,6 +46,8 @@ function removeFromFile() {
 
 module.exports = {
   readFromFile,
-  writeToFile,
-  readIfNotEmpty
+  appendToFile,
+  readIfNotEmpty,
+  writeNewLineIfNotEmpty,
+  readMakeArrayRewrite
 }

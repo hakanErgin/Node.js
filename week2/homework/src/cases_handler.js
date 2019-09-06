@@ -4,26 +4,30 @@ const pathToList = "./todolist.txt"
 const pathToCmds = "./cmdlist.txt"
 const todoListFile = require("./fs_handler")
 const readFromFile = todoListFile.readFromFile
-const writeToFile = todoListFile.writeToFile
+const appendToFile = todoListFile.appendToFile
 const readIfNotEmpty = todoListFile.readIfNotEmpty
+const writeNewLineIfNotEmpty = todoListFile.writeNewLineIfNotEmpty
+const readMakeArrayRewrite = todoListFile.readMakeArrayRewrite
 
 function showHelp() {
     readFromFile(pathToCmds)
 }
 
 function showList() {
-readIfNotEmpty(pathToList, readFromFile)
+    readIfNotEmpty(pathToList, readFromFile)
 }
 
 function add(param) {
-    param = "\n" + param
-    writeToFile(pathToList, param)
+    writeNewLineIfNotEmpty(pathToList, param, appendToFile)
 }
 
 function remove(param) {
-    todoList.splice(0, param)
-    console.log(todoList)
-    console.log(param)
+    readMakeArrayRewrite(pathToList, param)
+    
+    
+    // todoList.splice(0, param)
+    // console.log(todoList)
+    // console.log(param)
 }
 
 function update(prmOne, prmTwo) {
