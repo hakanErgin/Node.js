@@ -2,7 +2,7 @@
 
 const pathToList = "./todolist.json"
 const pathToCmds = "./cmdlist.json"
-const fsHandler = require("./fs_handler")
+const fsHandler = require("./fs_controls")
 const readFromFile = fsHandler.readFromFile
 const addToFile = fsHandler.addToFile
 const removeFromFile = fsHandler.removeFromFile

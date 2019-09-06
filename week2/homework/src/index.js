@@ -1,6 +1,6 @@
 'use strict'
-const caseFuncs = require("./cases_control")
 
+const caseFuncs = require("./cases_controls")
 const usableArgs = process.argv.slice(2)
 const command = usableArgs[0]
 const firstParam = usableArgs[1]
