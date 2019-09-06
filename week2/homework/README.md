@@ -2,7 +2,7 @@
 
 ## Assignment 1
 Refactor last week's homework to make it dry, modular and as easy to read as possible.
-You can find some inspiration in the [notes from class](../../wiki/Writing-readable,-DRY-&-modular-code).
+You can find some inspiration in the [notes from class](https://github.com/HackYourFutureBelgium/Node.js/wiki/Writing-readable,-DRY-&-modular-code).
 
 ## Assignment 2
 
