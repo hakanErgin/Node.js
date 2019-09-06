@@ -1,34 +1,35 @@
-'use strict';
+'use strict'
+const caseFuncs = require("./cases_handler")
 
-const funcs = require("./funcs");
-
-// TODO: Write the homework code in this file
 const usableArgs = process.argv.slice(2)
-const command = usableArgs[0];
+const command = usableArgs[0]
 const firstParam = usableArgs[1]
 const secondParam = usableArgs[2]
 
+if (usableArgs.length < 0) {
+    throw new Error('Please enter at least one argument.')
+}
 
 switch (command) {
+    case undefined:
     case 'help':
-        funcs.showHelp();
-        break;
+        caseFuncs.showHelp()
+        break
     case 'list':
-        funcs.showList();
-        break;
+        caseFuncs.showList()
+        break
     case 'add':
-        funcs.add(firstParam);
-        break;
+        caseFuncs.add(firstParam)
+        break
     case 'remove':
-        funcs.remove(firstParam);
-        break;
+        caseFuncs.remove(firstParam)
+        break
     case 'update':
-        funcs.update(firstParam, secondParam);
-        break;
+        caseFuncs.update(firstParam, secondParam)
+        break
     case 'reset':
-        funcs.resetList();
-        break;
+        caseFuncs.resetList()
+        break
     default:
-        funcs.showHelp();
-    // throw new Error('Command not supported');
+        throw new Error('Please enter a valid argument.')
 }
