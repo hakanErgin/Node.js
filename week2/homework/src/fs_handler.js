@@ -1,53 +1,77 @@
 'use strict'
 const fs = require('fs')
+const EMPTY_ARRAY = []
 
-const readFromFile = function (path) {
+function readFromFile(path) {
   fs.readFile(path, 'utf8', (err, data) => {
     if (err) throw err
-    console.log(data)
+    console.log(JSON.parse(data))
   })
 }
 
-const readMakeArrayRewrite = function (path, param) {
+const addToFile = function (path, param) {
   fs.readFile(path, 'utf8', (err, data) => {
     if (err) throw err
-    const splitData = data.split('\n')
-    splitData.splice(0, param)
-
-
-
-  })
-}
-
-const appendToFile = function (path, firstParam) {
-  fs.appendFile(path, firstParam, (err) => {
-    if (err) throw err
+    const parsed = JSON.parse(data)
+    parsed.push(param)
+    const stringified = JSON.stringify(parsed)
+    fs.writeFile(path, stringified, (err) => {
+      if (err) throw err
+      console.log("The file was saved!")
+    })
   })
 }
 
 const readIfNotEmpty = function (path, func) {
   fs.readFile(path, 'utf8', (err, data) => {
     if (err) throw err
-    else if (data.split('').length < 1) console.log("nothing to show")
-    else (func(path))
+    const parsed = JSON.parse(data)
+    if (parsed.length < 1) {
+      throw new Error('File Empty')
+    }
+    else { func(path) }
   })
 }
 
-const writeNewLineIfNotEmpty = function (path, param, func) {
+
+const removeFromFile = function (path, param) {
   fs.readFile(path, 'utf8', (err, data) => {
     if (err) throw err
-    else if (data.split('').length < 1) (func(path, param))
-    else (func(path, "\n" + param))
+    const parsed = JSON.parse(data)
+    if (param < 0 || param > parsed.length) {
+      throw new Error('Not in range')
+    }
+    else {
+      param--
+      parsed.splice(param, 1)
+      const stringified = JSON.stringify(parsed)
+      fs.writeFile(path, stringified, (err, data) => {
+        if (err) throw err
+        console.log("The file was saved!")
+      })
+    }
   })
 }
 
-function removeFromFile() {
+const resetFile = function (path, param) {
+  fs.readFile(path, 'utf8', (err, data) => {
+    if (err) throw err
+    let parsed = JSON.parse(data)
+    parsed = EMPTY_ARRAY
+    const stringified = JSON.stringify(parsed)
+    fs.writeFile(path, stringified, (err, data) => {
+      if (err) throw err
+      console.log("The file was saved!")
+    })
+  })
 }
+
 
 module.exports = {
   readFromFile,
-  appendToFile,
+  addToFile,
   readIfNotEmpty,
-  writeNewLineIfNotEmpty,
-  readMakeArrayRewrite
+  removeFromFile,
+  resetFile
+
 }
