@@ -2,7 +2,7 @@
 
 ## Assignment 1
 Refactor last week's homework to make it dry, modular and as easy to read as possible.
-You can find some inspiration in the [notes from class](../../wiki/Writing-readable,-DRY-&-modular-code).
+You can find some inspiration in the [notes from class](https://github.com/HackYourFutureBelgium/Node.js/wiki/Writing-readable,-DRY-&-modular-code).
 
 ## Assignment 2
 
@@ -79,7 +79,7 @@ node index.js reset
 
 - Handle edge cases, i.e. control what happens if user enters unexpected input,
   e.g. `remove -100`.
-- Write [dry, modular code that is easy to read](../../wiki/Writing-readable,-DRY-&-modular-code): choose good variable and function names, keeps code involving a single task bundled together in a function or module, refactor repeated code into a function.
+- Write [dry, modular code that is easy to read](https://github.com/HackYourFutureBelgium/Node.js/wiki/Writing-readable,-DRY-&-modular-code): choose good variable and function names, keeps code involving a single task bundled together in a function or module, refactor repeated code into a function.
 
 ## Bonus  
 - Use [commander](https://www.npmjs.com/package/commander) library to implement
