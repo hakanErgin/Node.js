@@ -40,6 +40,19 @@ class TodoManager {
     return this.write(filteredTodos);
   }
 
+  async deleteAll() {
+    const todos = await this.read();
+    const filteredTodos = todos.filter(t => t !== t);
+    return this.write(filteredTodos);
+  }
+
+  async readById(id) {
+    const todos = await this.read();
+    const todo = todos.filter(t => t.id === id);
+    return todo;
+  }
+
+
   read() {
     return fs.readFile(this._filename, DEFAULT_ENCODING)
       .then((contents) => JSON.parse(contents))
