@@ -41,9 +41,7 @@ class TodoManager {
   }
 
   async deleteAll() {
-    const todos = await this.read();
-    const filteredTodos = todos.filter(t => t !== t);
-    return this.write(filteredTodos);
+    return this.write([]);
   }
 
   async readById(id) {
