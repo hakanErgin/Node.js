@@ -3,4 +3,4 @@ or links, please share them by [opening a pull request](https://github.com/HackY
 
 # [HackYourFuture - Node.js](https://github.com/HackYourFutureBelgium/Node.js/wiki)
 
-Check the wiki (link above) for further information.
+Check the [wiki](https://github.com/HackYourFutureBelgium/Node.js/wiki) for further information.
